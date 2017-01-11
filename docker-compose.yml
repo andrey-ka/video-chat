@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "8080:8080"
+    environment:
+      - CASSANDRA_PORT=7000
+    command: 'npm start'
+  cassandra:
+    image: "cassandra:3.9"
+    ports:
+     - "7000:7000"
+    volumes:
+     - "/data/storage:/var/lib/cassandra"
